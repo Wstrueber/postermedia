@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Posters from './components/Posters'
+import CreatePoster from './components/CreatePoster'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import AppMenuBar from './components/AppMenuBar'
+import PosterProvider from './context/PosterProvider'
+import Categories from './components/Categories'
+import CategoryProvider from './context/CategoryProvider'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const App = () => {
+	return (
+		<CategoryProvider>
+			<PosterProvider>
+				<Router>
+					<div>
+						<AppMenuBar />
+						<Route exact path="/" component={Categories} />
+						<Route path="/news" component={Posters} />
+						<Route path="/entertainment" component={Posters} />
+						<Route path="/food" component={Posters} />
+						<Route path="/interesting" component={Posters} />
+						<Route path="/create" component={CreatePoster} />
+					</div>
+				</Router>
+			</PosterProvider>
+		</CategoryProvider>
+	)
 }
-
-export default App;
+export default App
