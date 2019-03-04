@@ -10,11 +10,16 @@ const Categories = ({ getCategories, categories }) => {
 
 	return (
 		categories && (
-			<CategoriesWrapper>
-				{categories.map((cat, ind) => (
-					<Category key={ind} image={cat.image} category={cat.category} />
-				))}
-			</CategoriesWrapper>
+			<>
+				<div style={{ marginTop: '80px', textAlign: 'center' }}>
+					<h1>CATEGORIES</h1>
+				</div>
+				<CategoriesWrapper>
+					{categories.map((cat, ind) => (
+						<Category key={ind} image={cat.image} category={cat.category} />
+					))}
+				</CategoriesWrapper>
+			</>
 		)
 	)
 }

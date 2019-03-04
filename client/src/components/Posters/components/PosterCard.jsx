@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { StyledCard, ButtonContainer } from './styled'
-import { CardContent, CardMedia, Typography } from '@material-ui/core'
-import { MessageOutlined, ExploreOff } from '@material-ui/icons'
+import React, { useState } from 'react'
+import { StyledCard, ButtonContainer, StyledButton } from '../../../common'
+import { CardContent, CardMedia, Tooltip } from '@material-ui/core'
+import {
+	MessageOutlined,
+	ExploreOff,
+	NotificationImportantOutlined,
+} from '@material-ui/icons'
 import DeletePoster from './DeletePoster'
 import CommentsModal from './CommentsModal'
 
@@ -10,17 +14,14 @@ const PosterCard = ({
 	_id,
 	image,
 	url,
-	description,
 	comments,
 	path,
 	content,
+	description,
 }) => {
 	const [open, setOpen] = useState(false)
 	const [coords, setCoords] = useState(null)
-	useEffect(() => {
-		console.log(path)
-	}, [])
-
+	console.log(description)
 	return content ? (
 		<StyledCard>
 			<CardContent style={{ overflowY: 'scroll' }}>
@@ -42,21 +43,29 @@ const PosterCard = ({
 						/>
 					</>
 				)}
-				<Typography gutterBottom variant="h5" component="p" />
 				<a style={{ textDecoration: 'none', color: 'inherit' }} href={url}>
 					{image ? (
-						<CardMedia
-							style={{ width: '200px', display: 'inherit' }}
-							component="img"
-							height="200px"
-							image={image}
-							alt="n/a"
-						/>
+						<>
+							<CardMedia
+								style={{ width: '200px', display: 'inherit' }}
+								component="img"
+								height="200px"
+								image={image}
+								alt="n/a"
+							/>
+						</>
 					) : (
 						<ExploreOff className="my-class" />
 					)}
 				</a>
-				<p>{title}</p>
+				<div>
+					{description && (
+						<Tooltip title={description}>
+							<NotificationImportantOutlined />
+						</Tooltip>
+					)}
+					<p>{title}</p>
+				</div>
 			</CardContent>
 			<ButtonContainer>
 				<DeletePoster path={path} id={_id} />

@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import ToolBar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import { IconButton } from '@material-ui/core'
+import { IconButton, Grid } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
+import { Home } from '@material-ui/icons'
 import { StyledMenu } from './styled'
 import { Link } from 'react-router-dom'
 
@@ -39,12 +40,26 @@ const AppMenuBar = () => {
 							horizontal: 'left',
 							vertical: 'top',
 						}}>
-						<Link style={{ textDecoration: 'none' }} to="/">
-							<MenuItem onClick={() => setEvent(null)}>Home</MenuItem>
-						</Link>
-						<Link style={{ textDecoration: 'none' }} to="/create">
-							<MenuItem onClick={() => setEvent(null)}>Create Poster</MenuItem>
-						</Link>
+						<div
+							style={{
+								display: 'flex',
+								flexDirection: 'column',
+								justifyContent: 'space-evenly',
+							}}>
+							<Link style={{ textDecoration: 'none' }} to="/">
+								<MenuItem onClick={() => setEvent(null)}>
+									<Home />
+									<span
+										style={{
+											fontSize: '1.1rem',
+											fontWeight: 'bolder',
+											marginLeft: '15px',
+										}}>
+										HOME
+									</span>
+								</MenuItem>
+							</Link>
+						</div>
 					</StyledMenu>
 				</ToolBar>
 			</AppBar>

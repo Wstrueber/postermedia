@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import PosterForm from './PosterForm'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem'
-import Input from '@material-ui/core/Input'
-
+import { withCategories } from '../../context/withCategories'
+import { CardContent } from '@material-ui/core'
 import {
-	PosterWrapper,
-	PosterContainer,
+	StyledCard,
 	ButtonContainer,
 	StyledButton,
 	StyledInput,
-} from './styled'
-import { withCategories } from '../../context/withCategories'
+} from '../../common'
 
-const CreatePoster = ({ getCategories, categories }) => {
+import Add from '@material-ui/icons/Add'
+
+const CreatePoster = ({ path }) => {
 	const [url, setUrl] = useState('')
 	const [comments, setComments] = useState('')
 	const [poster, setPoster] = useState('')
-	const [choice, setChoice] = useState('none')
 	const [open, setOpen] = useState(false)
 
-	useEffect(() => {
-		getCategories()
-	}, [])
 	useEffect(() => {
 		setPoster({ url, comments })
 	}, [url, comments])
@@ -30,21 +24,33 @@ const CreatePoster = ({ getCategories, categories }) => {
 	function handleUrlChange(e) {
 		setUrl(e.target.value)
 	}
-	function handleSelectChange(e) {
-		setChoice(e.target.value)
-	}
-	function handleOpen() {
-		setOpen(!open)
-	}
-	function handleClose() {
-		setOpen(!open)
+	function handleCommentsChange(e) {
+		setComments(e.target.value)
 	}
 
-	return (
-		categories && (
-			<PosterForm choice={choice} poster={poster}>
-				<PosterWrapper>
-					<PosterContainer raised={true}>
+	function toggleForm() {
+		setOpen(!open)
+	}
+	function handleClear() {
+		setUrl('')
+		setComments('')
+	}
+
+	return open ? (
+		<StyledCard>
+			<PosterForm
+				handleClear={handleClear}
+				toggleForm={toggleForm}
+				path={path}
+				poster={poster}>
+				<CardContent>
+					<div
+						style={{
+							display: 'flex',
+							height: '380px',
+							justifyContent: 'center',
+							flexDirection: 'column',
+						}}>
 						<StyledInput
 							required={true}
 							type="url"
@@ -52,117 +58,48 @@ const CreatePoster = ({ getCategories, categories }) => {
 							value={url}
 							onChange={handleUrlChange}
 						/>
-						<Select
-							style={{ height: '50px' }}
-							value={choice}
-							open={open}
-							onOpen={handleOpen}
-							onClose={handleClose}
-							onChange={handleSelectChange}>
-							<MenuItem value="none">
-								<em>none</em>
-							</MenuItem>
-							{categories.map((cat, ind) => (
-								<MenuItem key={ind} value={cat.category}>
-									{cat.category}
-								</MenuItem>
-							))}
-						</Select>
-						<Input
+
+						<StyledInput
 							required={true}
-							style={{ fontSize: '1.5rem', marginTop: '5%' }}
 							type="text"
 							placeholder="comments..."
 							value={comments}
-							multiline={true}
-							rows={3}
-							onChange={e => setComments(e.target.value)}
+							onChange={handleCommentsChange}
 						/>
 						<ButtonContainer>
+							<StyledButton
+								onClick={toggleForm}
+								variant="contained"
+								color="secondary"
+								type="submit">
+								Cancel
+							</StyledButton>
 							<StyledButton variant="contained" color="primary" type="submit">
 								Create Poster
 							</StyledButton>
 						</ButtonContainer>
-					</PosterContainer>
-				</PosterWrapper>
+					</div>
+				</CardContent>
 			</PosterForm>
-		)
+		</StyledCard>
+	) : (
+		<StyledCard>
+			<CardContent>
+				<h1>Create Poster</h1>
+				<div
+					style={{
+						display: 'flex',
+						height: '400px',
+						justifyContent: 'center',
+					}}>
+					<Add
+						className="my-class"
+						style={{ cursor: 'pointer' }}
+						onClick={toggleForm}
+					/>
+				</div>
+			</CardContent>
+		</StyledCard>
 	)
 }
-export default withCategories(CreatePoster)
-
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import { withStyles } from '@material-ui/core/styles';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import MenuItem from '@material-ui/core/MenuItem';
-// import Button from '@material-ui/core/Button';
-
-// const styles = theme => ({
-// 	button: {
-// 		display: 'block',
-// 		marginTop: theme.spacing.unit * 2,
-// 	},
-// 	formControl: {
-// 		margin: theme.spacing.unit,
-// 		minWidth: 120,
-// 	},
-// });
-
-// class ControlledOpenSelect extends React.Component {
-// 	state = {
-// 		age: '',
-// 		open: false,
-// 	};
-
-// 	handleChange = event => {
-// 		this.setState({ [event.target.name]: event.target.value });
-// 	};
-
-// 	handleClose = () => {
-// 		this.setState({ open: false });
-// 	};
-
-// 	handleOpen = () => {
-// 		this.setState({ open: true });
-// 	};
-
-// 	render() {
-// 		const { classes } = this.props;
-
-// 		return (
-// 			<form autoComplete="off">
-// 				<Button className={classes.button} onClick={this.handleOpen}>
-// 					Open the select
-//         </Button>
-// 				<FormControl className={classes.formControl}>
-// 					<InputLabel htmlFor="demo-controlled-open-select">Age</InputLabel>
-// 					<Select
-// 						open={this.state.open}
-// 						onClose={this.handleClose}
-// 						onOpen={this.handleOpen}
-// 						value={this.state.age}
-// 						onChange={this.handleChange}
-// 						inputProps={{
-// 							name: 'age',
-// 							id: 'demo-controlled-open-select',
-// 						}}
-// 					>
-// 						<MenuItem value="">
-// 							<em>None</em>
-// 						</MenuItem>
-// 						<MenuItem value={10}>Ten</MenuItem>
-// 						<MenuItem value={20}>Twenty</MenuItem>
-// 						<MenuItem value={30}>Thirty</MenuItem>
-// 					</Select>
-// 				</FormControl>
-// 			</form>
-// 		);
-// 	}
-// }
-
-// ControlledOpenSelect.propTypes = {
-// 	classes: PropTypes.object.isRequired,
-// };
-
-// export default withStyles(styles)(ControlledOpenSelect);
+export default CreatePoster

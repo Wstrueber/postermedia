@@ -5,6 +5,10 @@ import Modal from '@material-ui/core/Modal'
 
 const styles = theme => ({
 	paper: {
+		display: 'flex',
+		flexDirection: 'column',
+		maxHeight: 59,
+		overflowY: 'scroll',
 		position: 'absolute',
 		wordWrap: 'break-word',
 		width: theme.spacing.unit * 20,
@@ -30,7 +34,6 @@ const CommentsModal = ({
 		}
 	}
 	const getModalStyle = () => {
-		console.log(coords)
 		return {
 			top: `${coords.y - 50}px`,
 			left: `${coords.x}px`,
@@ -45,8 +48,8 @@ const CommentsModal = ({
 				open={open || false}
 				onClose={e => handleClose(e)}>
 				<div style={coords && getModalStyle()} className={classes.paper}>
-					<Typography variant="h6" id="modal-title">
-						Comments
+					<Typography variant="h5" id="modal-title">
+						Comments:
 					</Typography>
 					<Typography variant="subtitle1" id="simple-modal-description">
 						{comments}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { DeleteForeverRounded } from '@material-ui/icons/'
-import { StyledButton } from './styled'
+import { StyledButton } from '../../../common'
 import { withPosters } from '../../../context/withPosters'
 
 const DeletePoster = ({ handleDelete, id, path }) => {

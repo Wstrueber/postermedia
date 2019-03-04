@@ -5,5 +5,4 @@ export const PostersWrapper = styled.div`
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	justify-content: center;
-	/* margin-top: 80px; */
 `

@@ -5,7 +5,7 @@ export const CategoriesWrapper = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin-top: 80px;
+	/* margin-top: 80px; */
 `
 
 export const StyledCard = styled(Card)`
@@ -19,7 +19,7 @@ export const StyledCard = styled(Card)`
 	background: whitesmoke !important;
 	margin: 1%;
 	&:hover {
-		transform: scale(1.02);
+		transform: scale(1.01);
 		background: #e8e3e3 !important;
 	}
 `
