@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { PostersWrapper } from './styled'
+import PostersWrapper from './components/PostersWrapper/PostersWrapper'
 import { withPosters } from '../../context/withPosters'
 import { PosterCard } from './components'
 import { LoadingSpinner } from '../../common'
@@ -13,24 +13,28 @@ const Posters = ({ posters, getPosters, spinner, match: { path } }) => {
 		loadPosters()
 	}, [])
 
-	return spinner ? (
-		<LoadingSpinner />
-	) : (
+	return (
 		<>
 			<div style={{ marginTop: '80px', textAlign: 'center' }}>
 				<h1>{path.slice(1, path.length).toUpperCase()}</h1>
 			</div>
 			<PostersWrapper>
-				{posters.length > 0 ? (
-					posters.map((poster, ind) => (
-						<PosterCard content={true} path={path} key={ind} {...poster} />
-					))
+				{spinner ? (
+					<LoadingSpinner />
 				) : (
 					<>
-						<PosterCard content={false} />
+						<CreatePoster path={path} />
+						{posters.length > 0 ? (
+							posters.map((poster, ind) => (
+								<PosterCard content={true} path={path} key={ind} {...poster} />
+							))
+						) : (
+							<>
+								<PosterCard content={false} />
+							</>
+						)}
 					</>
 				)}
-				<CreatePoster path={path} />
 			</PostersWrapper>
 		</>
 	)

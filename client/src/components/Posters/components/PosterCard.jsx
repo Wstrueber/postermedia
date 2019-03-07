@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { StyledCard, ButtonContainer, StyledButton } from '../../../common'
+import { StyledCard, ButtonContainer } from '../../../common'
 import { CardContent, CardMedia, Tooltip } from '@material-ui/core'
 import {
 	MessageOutlined,
 	ExploreOff,
 	NotificationImportantOutlined,
 } from '@material-ui/icons'
+import { withTheme } from 'styled-components'
 import DeletePoster from './DeletePoster'
 import CommentsModal from './CommentsModal'
 
@@ -18,10 +19,11 @@ const PosterCard = ({
 	path,
 	content,
 	description,
+	icon,
 }) => {
 	const [open, setOpen] = useState(false)
 	const [coords, setCoords] = useState(null)
-	console.log(description)
+
 	return content ? (
 		<StyledCard>
 			<CardContent style={{ overflowY: 'scroll' }}>
@@ -54,13 +56,21 @@ const PosterCard = ({
 								alt="n/a"
 							/>
 						</>
+					) : icon ? (
+						<CardMedia
+							style={{ width: '200px', display: 'inherit' }}
+							component="img"
+							height="200px"
+							image={icon}
+							alt="n/a"
+						/>
 					) : (
 						<ExploreOff className="my-class" />
 					)}
 				</a>
 				<div>
 					{description && (
-						<Tooltip title={description}>
+						<Tooltip fontSize="large" title={description}>
 							<NotificationImportantOutlined />
 						</Tooltip>
 					)}
@@ -81,4 +91,4 @@ const PosterCard = ({
 		</StyledCard>
 	)
 }
-export default PosterCard
+export default withTheme(PosterCard)

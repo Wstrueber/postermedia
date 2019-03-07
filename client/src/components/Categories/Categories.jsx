@@ -11,7 +11,11 @@ const Categories = ({ getCategories, categories }) => {
 	return (
 		categories && (
 			<>
-				<div style={{ marginTop: '80px', textAlign: 'center' }}>
+				<div
+					style={{
+						marginTop: '80px',
+						textAlign: 'center',
+					}}>
 					<h1>CATEGORIES</h1>
 				</div>
 				<CategoriesWrapper>

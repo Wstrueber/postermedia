@@ -1,9 +1,9 @@
 import LoadingSpinner from './LoadingSpinner'
 import {
+	StyledCard,
 	ButtonContainer,
 	StyledButton,
 	StyledInput,
-	StyledCard,
 } from './styled'
 
 export {

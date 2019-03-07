@@ -19,17 +19,16 @@ export default class PosterProvider extends Component {
 	}
 	getPosters = async category => {
 		this.showSpinner()
-		const result = await axios.get(category)
+		const result = await axios.get(`api/${category}`)
 		this.setState({ posters: result.data, spinner: false })
 	}
 	handleDelete = async (id, category) => {
-		// this.showSpinner()
-		await axios.delete(`${category}/${id}`)
+		await axios.delete(`api/${category}/${id}`)
 		this.getPosters(category)
 	}
 	submitPoster = async (data, category) => {
 		this.showSpinner()
-		await axios.post(category, data)
+		await axios.post(`api/${category}`, data)
 		this.getPosters(category)
 	}
 	render() {

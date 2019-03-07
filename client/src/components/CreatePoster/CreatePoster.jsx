@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import PosterForm from './PosterForm'
-import { withCategories } from '../../context/withCategories'
 import { CardContent } from '@material-ui/core'
 import {
 	StyledCard,
@@ -21,17 +20,17 @@ const CreatePoster = ({ path }) => {
 		setPoster({ url, comments })
 	}, [url, comments])
 
-	function handleUrlChange(e) {
+	const handleUrlChange = e => {
 		setUrl(e.target.value)
 	}
-	function handleCommentsChange(e) {
+	const handleCommentsChange = e => {
 		setComments(e.target.value)
 	}
 
-	function toggleForm() {
+	const toggleForm = () => {
 		setOpen(!open)
 	}
-	function handleClear() {
+	const handleClear = () => {
 		setUrl('')
 		setComments('')
 	}
@@ -68,7 +67,10 @@ const CreatePoster = ({ path }) => {
 						/>
 						<ButtonContainer>
 							<StyledButton
-								onClick={toggleForm}
+								onClick={() => {
+									toggleForm()
+									handleClear()
+								}}
 								variant="contained"
 								color="secondary"
 								type="submit">

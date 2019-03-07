@@ -22,6 +22,6 @@ const PosterForm = ({
 		e.preventDefault()
 		triggerSubmit(!submit)
 	}
-	return <form onSubmit={e => handleForm(e)}>{children}</form>
+	return <form onSubmit={handleForm}>{children}</form>
 }
 export default withPosters(PosterForm)

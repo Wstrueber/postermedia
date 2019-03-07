@@ -14,14 +14,8 @@ code {
     monospace;
 }
 
-.MuiAppBar-colorPrimary-8 {
-  background-color: #8c787f !important;
+.my-class {
+  font-size: 12.5rem !important;
 }
 
-.MuiSvgIcon-root-50.my-class {
-  font-size: 12.5rem;
-}
-circle {
-  color: #90777f66 !important;
-}
 

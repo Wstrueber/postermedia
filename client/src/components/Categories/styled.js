@@ -1,25 +1,12 @@
 import styled from 'styled-components'
-import Card from '@material-ui/core/Card'
 
 export const CategoriesWrapper = styled.div`
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	overflow-y: scroll;
+	grid-column-gap: 25px;
 	justify-content: center;
-	/* margin-top: 80px; */
-`
-
-export const StyledCard = styled(Card)`
-	text-transform: uppercase;
-	text-align: center;
-	display: flex;
-	word-wrap: break-word !important;
-	flex-direction: column;
-	width: 300px;
-	height: 400px;
-	background: whitesmoke !important;
-	margin: 1%;
-	&:hover {
-		transform: scale(1.01);
-		background: #e8e3e3 !important;
+	grid-template-columns: auto auto auto auto;
+	@media only screen and (max-width: 600px) {
+		grid-template-columns: auto;
 	}
 `

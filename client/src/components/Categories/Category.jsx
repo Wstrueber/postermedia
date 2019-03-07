@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { StyledCard } from './styled'
+import { StyledCard } from '../../common'
 import CardContent from '@material-ui/core/CardContent'
 import { Redirect } from 'react-router-dom'
+import { withTheme } from 'styled-components'
 
 const Category = props => {
 	const [redirect, setRedirect] = useState(false)
@@ -21,4 +22,4 @@ const Category = props => {
 		</StyledCard>
 	)
 }
-export default Category
+export default withTheme(Category)
