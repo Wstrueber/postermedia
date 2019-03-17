@@ -9,6 +9,7 @@ import {
 } from '../../common'
 
 import Add from '@material-ui/icons/Add'
+import { IoIosPaper } from 'react-icons/io'
 
 const CreatePoster = ({ path }) => {
 	const [url, setUrl] = useState('')
@@ -48,6 +49,7 @@ const CreatePoster = ({ path }) => {
 							display: 'flex',
 							height: '380px',
 							justifyContent: 'center',
+							// alignItems: 'center',
 							flexDirection: 'column',
 						}}>
 						<StyledInput
@@ -67,6 +69,7 @@ const CreatePoster = ({ path }) => {
 						/>
 						<ButtonContainer>
 							<StyledButton
+								style={{ marginRight: '10px' }}
 								onClick={() => {
 									toggleForm()
 									handleClear()
@@ -94,8 +97,9 @@ const CreatePoster = ({ path }) => {
 						height: '400px',
 						justifyContent: 'center',
 					}}>
-					<Add
-						className="my-class"
+					<IoIosPaper
+						size="12.5rem"
+						// className="my-class"
 						style={{ cursor: 'pointer' }}
 						onClick={toggleForm}
 					/>

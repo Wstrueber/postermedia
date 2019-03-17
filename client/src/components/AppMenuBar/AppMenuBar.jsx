@@ -1,9 +1,11 @@
 import React from 'react'
-import { StyledAppBar } from './styled'
+import { StyledAppBar, ImageContainer } from './styled'
 import { withTheme } from 'styled-components'
 import { IconButton } from '@material-ui/core'
 import { ToggleOn, ToggleOff } from '@material-ui/icons'
+import { Link } from 'react-router-dom'
 
+import logo from './logo.png'
 const AppMenuBar = ({ theme: { setTheme, mode } }) => {
 	return (
 		<StyledAppBar>
@@ -16,18 +18,32 @@ const AppMenuBar = ({ theme: { setTheme, mode } }) => {
 					width: '100%',
 					flexDirection: 'column',
 				}}>
-				<div style={{ alignSelf: 'center' }}>
-					<span>{(mode && mode.toUpperCase()) || 'LIGHT'}</span>
-					<IconButton
-						onClick={() =>
-							setTheme(mode === 'dark' ? { mode: 'light' } : { mode: 'dark' })
-						}>
-						{mode === 'dark' ? (
-							<ToggleOff fontSize="large" />
-						) : (
-							<ToggleOn fontSize="large" />
-						)}
-					</IconButton>
+				<div
+					style={{
+						width: '100%',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'space-between',
+					}}>
+					<Link to="/">
+						<ImageContainer>
+							<img style={{ height: 40, width: 130 }} src={logo} alt="n/a" />
+						</ImageContainer>
+					</Link>
+					<span>
+						{(mode && mode.toUpperCase()) || 'LIGHT'}
+						<IconButton
+							onClick={() =>
+								setTheme(mode === 'dark' ? { mode: 'light' } : { mode: 'dark' })
+							}>
+							{mode === 'dark' ? (
+								<ToggleOff fontSize="large" />
+							) : (
+								<ToggleOn fontSize="large" />
+							)}
+						</IconButton>
+					</span>
+					{/* <span /> */}
 				</div>
 			</div>
 		</StyledAppBar>

@@ -11,6 +11,7 @@ const createFoodPoster = async (req, res, next) => {
 		const post = new Food(poster)
 		post.save()
 		console.log(post)
+		console.log('/food')
 	} catch (err) {
 		next(err)
 	}

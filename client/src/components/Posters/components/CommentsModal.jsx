@@ -35,9 +35,9 @@ const CommentsModal = ({
 	}
 	const getModalStyle = () => {
 		return {
-			top: `${coords.y - 50}px`,
-			left: `${coords.x}px`,
-			transform: `translate(-50%, -50%)`,
+			top: `${coords.y - 80}px`,
+			left: `${coords.x - 50}px`,
+			// transform: `translate(-50%, -50%)`,
 		}
 	}
 	return (

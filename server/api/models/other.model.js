@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose
 
-module.exports.Interesting = mongoose.model(
-	'interesting',
+module.exports.Other = mongoose.model(
+	'other',
 	new Schema({
 		url: {
 			type: String,

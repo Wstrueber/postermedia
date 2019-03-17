@@ -11,6 +11,7 @@ const createNewsPoster = async (req, res, next) => {
 		const post = new News(poster)
 		post.save()
 		console.log(post)
+		console.log('/news')
 	} catch (err) {
 		next(err)
 	}

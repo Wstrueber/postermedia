@@ -1,18 +1,14 @@
 [
 	{
-		"category": "news",
-		"image": "http://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png"
+		"category": "news"
 	},
 	{
-		"category": "entertainment",
-		"image": "http://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png"
+		"category": "entertainment"
 	},
 	{
-		"category": "food",
-		"image": "http://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png"
+		"category": "food"
 	},
 	{
-		"category": "interesting",
-		"image": "http://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/-Insert_image_here-.svg/320px--Insert_image_here-.svg.png"
+		"category": "other"
 	}
 ]

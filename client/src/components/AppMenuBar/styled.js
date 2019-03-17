@@ -10,3 +10,13 @@ export const StyledAppBar = styled(AppBar)`
 	color: ${theme.primaryTextColor} !important;
 	font-weight: bolder;
 `
+
+export const ImageContainer = styled.div`
+	height: 40px;
+	border-radius: 40px;
+	/* width: 130px; */
+	background-color: whitesmoke;
+	&:hover {
+		background-color: darkgray;
+	}
+`

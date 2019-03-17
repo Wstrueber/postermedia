@@ -1,15 +1,9 @@
 import { useState, useEffect } from 'react'
 
-const defaultTheme = {
-	mode: 'light',
-	primary: '#e9e9e9',
-	primaryTextColor: 'black',
-	card: 'whitesmoke',
-}
 
 const getInitialTheme = () => {
 	const savedTheme = localStorage.getItem('theme')
-	return savedTheme ? JSON.parse(savedTheme) : defaultTheme
+	return savedTheme ? JSON.parse(savedTheme) : {mode: 'light'}
 }
 
 const useTheme = () => {

@@ -48,6 +48,7 @@ const PosterCard = ({
 				<a style={{ textDecoration: 'none', color: 'inherit' }} href={url}>
 					{image ? (
 						<>
+							{console.log(image)}
 							<CardMedia
 								style={{ width: '200px', display: 'inherit' }}
 								component="img"
@@ -69,12 +70,12 @@ const PosterCard = ({
 					)}
 				</a>
 				<div>
+					<p>{title}</p>
 					{description && (
 						<Tooltip fontSize="large" title={description}>
 							<NotificationImportantOutlined />
 						</Tooltip>
 					)}
-					<p>{title}</p>
 				</div>
 			</CardContent>
 			<ButtonContainer>

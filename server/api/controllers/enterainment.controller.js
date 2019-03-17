@@ -11,6 +11,7 @@ const createEntertainmentPoster = async (req, res, next) => {
 		const post = new Entertainment(poster)
 		post.save()
 		console.log(post)
+		console.log('/entertainment')
 	} catch (err) {
 		next(err)
 	}

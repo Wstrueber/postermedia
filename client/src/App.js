@@ -35,7 +35,7 @@ const App = () => {
 								<Route path="/news" component={Posters} />
 								<Route path="/entertainment" component={Posters} />
 								<Route path="/food" component={Posters} />
-								<Route path="/interesting" component={Posters} />
+								<Route path="/other" component={Posters} />
 							</div>
 						</Router>
 					</PosterProvider>

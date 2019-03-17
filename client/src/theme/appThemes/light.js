@@ -3,5 +3,6 @@ export default {
 	primaryTextColor: 'black',
 	secondaryTextColor: '#9d9a9a',
 	cardBackground: 'whitesmoke',
-	appBarBackground: '#90777f66',
+	// appBarBackground: '#90777f66',
+	appBarBackground: '#c8a4a5',
 }

@@ -12,7 +12,8 @@ export default class CategoryProvider extends Component {
 		}
 	}
 	getCategories = async () => {
-		const result = await axios.get('api/categories')
+		const result = await axios.get('/api/categories')
+		console.log(result.data)
 		this.setState({ categories: result.data })
 	}
 

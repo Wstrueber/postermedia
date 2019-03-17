@@ -1,16 +1,17 @@
 const { scrapeMetaData } = require('../service')
-const { Interesting } = require('../models/interesting.model')
+const { Other } = require('../models/other.model')
 
-const createInterestingPoster = async (req, res, next) => {
+const createOtherPoster = async (req, res, next) => {
 	const { body } = req
 
 	let poster
 
 	try {
 		poster = await scrapeMetaData(body)
-		const post = new Interesting(poster)
+		const post = new Other(poster)
 		post.save()
 		console.log(post)
+		console.log('/other')
 	} catch (err) {
 		next(err)
 	}
@@ -21,7 +22,7 @@ const createInterestingPoster = async (req, res, next) => {
 const getAllPosters = async (req, res, next) => {
 	let posters
 	try {
-		posters = await Interesting.find({})
+		posters = await Other.find({})
 	} catch (err) {
 		next(err)
 	}
@@ -32,7 +33,7 @@ const getPoster = async (req, res, next) => {
 	const { id } = req.params
 	let poster
 	try {
-		poster = await Interesting.findById(id)
+		poster = await Other.findById(id)
 	} catch (err) {
 		next(err)
 	}
@@ -44,7 +45,7 @@ const updatePoster = async (req, res, next) => {
 	const { body } = req
 	let updatedPoster
 	try {
-		updatedPoster = await Interesting.findByIdAndUpdate(id, body, { new: true })
+		updatedPoster = await Other.findByIdAndUpdate(id, body, { new: true })
 	} catch (err) {
 		next(err)
 	}
@@ -54,7 +55,7 @@ const updatePoster = async (req, res, next) => {
 const deletePoster = async (req, res, next) => {
 	const { id } = req.params
 	try {
-		await Interesting.findByIdAndDelete(id)
+		await Other.findByIdAndDelete(id)
 	} catch (err) {
 		next(err)
 	}
@@ -62,7 +63,7 @@ const deletePoster = async (req, res, next) => {
 }
 
 module.exports = {
-	createInterestingPoster,
+	createOtherPoster,
 	getAllPosters,
 	getPoster,
 	updatePoster,

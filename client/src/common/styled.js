@@ -20,7 +20,7 @@ export const StyledCard = styled(Card)`
 `
 export const ButtonContainer = styled.div`
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
 	flex-grow: 1;
 	padding-bottom: 4%;
 `
